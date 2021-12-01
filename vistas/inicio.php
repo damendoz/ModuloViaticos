@@ -10,9 +10,27 @@
             <div class="card-body p-5">
               <h1 class="fw-light">Inicio</h1>
               <hr>
+              <?php
+              include "../clases/conexion.php";
+              $con = new Conexion();
+              $conexion = $con->conectar();
+                  $idUsuario = $_SESSION['usuario']['id'];
+                  $sql = "SELECT
+                  persona.paterno AS paterno,
+                  persona.nombre AS nombre
+                  FROM
+                    t_persona AS persona
+                        INNER JOIN
+                      t_usuarios AS usuario ON persona.id_persona = usuario.id_persona
+                  WHERE
+                    persona.id_persona = '$idUsuario'";
+                        $respuesta = mysqli_query($conexion, $sql);
+                ?>
+                <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
               <p class="lead">
-              Bienvenido! <?php echo $_SESSION['usuario']['nombre']; ?>
+              Bienvenido! <?php echo $mostrar['paterno']; ?> <?php echo $mostrar['nombre']; ?>
               </p>
+              <?php } ?>
             </div>
           </div>
         </div>

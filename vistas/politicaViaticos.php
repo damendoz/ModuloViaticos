@@ -7,11 +7,20 @@
         <div class="container">
           <div class="card border-0 shadow my-5">
             <div class="card-body p-5">
-              <h1 class="fw-light">Politicas de Viaticos</h1>
+            <div>
+              <button type="button" class="close">
+                <a href="inicio.php">
+                  <i class="fas fa-times">        
+                  </i>
+                </a>
+              </button>
+            </div>
+              <h1 class="fw-light">Políticas de viáticos</h1>
               <hr>
               <p class="lead">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuarios">
-                Agregar politica de Viaticos
+                <button class="btn btn-primary" data-toggle="modal" data-target="#modalPoliticaViaticos">
+                  <i class="fas fa-book" ></i>
+                  Agregar política de viáticos
                 </button>
                 <div id="tablaPoliticasViaticosLoad"></div>
               </p>

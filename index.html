@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">	    
-		<title>Inicio sesion | ITBC de Venezuela C.A.</title>
+		<title>Inicio sesion | ITBC Group</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="public/bootstrap/bootstrap.min.css">
@@ -23,20 +23,20 @@
 		<div class="imagePrincipalCohete"></div>
 
 		<!-- Informatión -->
-		<div class="underlineHover"><h1>Sistema Autogestión de Viaticos</h1></div>
+		<div class="underlineHover"><h1>Sistema autogestión de viáticos</h1></div>
 
 		<!-- Login  Form -->
 		<div class="wrapper fadeInDown">
 			<div id="formContent">
-				<div class="underlineHover"><h2>Inicio de sesion</h2></div>
+				<div class="underlineHover"><h2>Inicio de sesión</h2></div>
 					<form id="frmLogin" method="POST" onsubmit="return loginUsuario ()">
-						<input type="" id="login" class="fadeIn second" name="login" placeholder="User" required>
-						<input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required>
+						<input type="" id="login" class="fadeIn second" name="login" placeholder="Usuario" required>
+						<input type="password" id="password" class="fadeIn third" name="password" placeholder="Contrsaeña" required>
 						<input type="submit" class="fadeIn fourth" value="Entrar">
 					</form>
 				
-				<!-- Forgout Password-->
-				<a class="underlineHover" href="#" class="lossingPass">¿Olvidaste tu contraseña?</a>
+				<!-- Forgout Password
+				<a class="underlineHover" href="#" class="lossingPass">¿Olvidaste tu contraseña?</a> -->
 
 				<!-- Remind Passowrd -->
 				<div id="formFooter">
@@ -46,79 +46,14 @@
 				<!-- Modal new user -->
 				<form id="frmregistrarNuevoUsuario" method="POST" onsubmit="return registrarNuevoUsuario()">
 					<div class="modal fade" id="modalregistrarNuevoUsuario" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog modal-lg" role="document" id="formulario">
+						<div class="modal-dialog" role="document" id="formulario">
 						<div class="modal-content">
 							<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Registrate!</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+								<h5 class="modal-title" id="exampleModalLabel">Registrate!</h5>
 							</div>
-							<div class="modal-body">
-							<div class="row">
-								<div class="col-sm-4">
-								<label for="paternoe">Apellido paterno</label>
-								<input type=""class="form-control" id="paternoe" name="paternoe" required>
-								</div>
-								<div class="col-sm-4">
-								<label for="maternoe">Apellido materno</label>
-								<input type=""class="form-control" id="maternoe" name="maternoe">
-								</div>
-								<div class="col-sm-4">
-								<label for="nombree">Nombres</label>
-								<input type=""class="form-control" id="nombree" name="nombree" required>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-4">
-								<label for="fechaNacimientoe">Fecha de nacimiento</label>
-								<input type="date"class="form-control" id="fechaNacimientoe" name="fechaNacimientoe" required>
-								</div>
-								<div class="col-sm-4">
-								<label for="sexoe">Sexo</label>
-								<select class="form-control" id="sexoe" name="sexoe" required>
-									<option value=""></option>
-									<option value="F">Femenino</option>
-									<option value="M">Masculino</option>
-								</select>
-								</div>
-								<div class="col-sm-4">
-								<label for="telefonoe">Telefono</label>
-								<input type="number"class="form-control" id="telefonoe" name="telefonoe">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-4">
-								<label for="correoe">Correo</label>
-								<input type="email"class="form-control" id="correoe" name="correoe" required>
-								</div>
-								<div class="col-sm-4">
-								<label for="usuarioe">Usuario</label>
-								<input type=""class="form-control" id="usuarioe" name="usuarioe" required>
-								</div>
-								<div class="col-sm-4">
-								<label for="passworde">Password</label>
-								<input type="password"class="form-control" id="passworde" name="passworde" required>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-4">
-								<label for="idRole">Rol de usuario</label>
-								<select name="idRole" id="idRole" class="form-control" required>
-									<option value="1">Empleado</option>
-								</select>
-								</div>
-							</div>
-							<div class="row">
-							<div class="col-sm-12">
-								<label for="ubicacione">Ubicacion</label>
-								<textarea name="ubicacione" class="form-control" id="ubicacione"></textarea>
-							</div>
-							</div>
-							</div>
+							<p>Contáctanos a través del correo electrónico daniel.mendoza@itbcgroup.com</p>
 							<div class="modal-footer">
 							<span class="btn btn-secondary" data-dismiss="modal">Cerrar</span>
-							<button class="btn btn-primary">Registrarse!</button>
 							</div>
 						</div>
 						</div>

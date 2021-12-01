@@ -1,12 +1,20 @@
 <?php 
   include "header.php"; 
-    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1 || $_SESSION['usuario']['rol'] == 3) {
+    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1) {
 ?>
 
     <!-- Page Content -->
         <div class="container">
           <div class="card border-0 shadow my-5">
             <div class="card-body p-5">
+            <div>
+              <button type="button" class="close">
+                <a href="inicio.php">
+                  <i class="fas fa-times">        
+                  </i>
+                </a>
+              </button>
+            </div>
               <h1 class="fw-light">Solicitud de Relacion de Gastos</h1>
               <hr>
               <p class="lead">

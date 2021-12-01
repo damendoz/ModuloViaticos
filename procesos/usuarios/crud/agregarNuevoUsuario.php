@@ -2,7 +2,6 @@
 
 $datos = array(
 	"paterno" => $_POST['paterno'],
-	"materno" => $_POST['materno'],
 	"nombre" => $_POST['nombre'],
 	"fechaNacimiento" => $_POST['fechaNacimiento'],
 	"sexo" => $_POST['sexo'],
@@ -11,8 +10,12 @@ $datos = array(
 	"usuario" => $_POST['usuario'],
 	"password" => sha1($_POST['password']),
 	"idRol" => $_POST['idRol'],
-	"ubicacion" => $_POST['ubicacion']
-
+	"ubicacion" => $_POST['ubicacion'],
+	"idIdentidad" => $_POST['idIdentidad'],
+	"idPais" => $_POST['idPais'],
+	"idCliente" => $_POST['idCliente'],
+	"idProyecto" => $_POST['idProyecto'],
+	"idCargo" => $_POST['idCargo']
 );
 
 include "../../../clases/usuarios.php";

@@ -1,6 +1,6 @@
 <?php 
   include "header.php"; 
-    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1){
+    if (isset($_SESSION['usuario']) && $_SESSION['usuario']['rol'] == 1) {
       include "../clases/conexion.php";
       $con = new conexion();
       $conexion = $con->conectar();
@@ -10,14 +10,23 @@
         <div class="container">
           <div class="card border-0 shadow my-5">
             <div class="card-body p-5">
+            <div>
+              <button type="button" class="close">
+                <a href="inicio.php">
+                  <i class="fas fa-times">        
+                  </i>
+                </a>
+              </button>
+            </div>
               <h1 class="fw-light">Solicitud de Anticipo</h1>
               <hr>
               <p class="lead">
-                <button class="btn btn-primary" 
-                data-toggle="modal" 
-                data-target="#modalSolicitarAnticipo">
-                Solicitar Anticipo
-                </button>
+                                <button class="btn btn-primary" 
+                                data-toggle="modal" 
+                                data-target="#modalSolicitarAnticipo">
+                                <i class="fas fa-file-upload"></i>
+                                Solicitar Anticipo
+                                </button>
                 <div id="tablaAnticipoClienteLoad"></div>
               </p>
             </div>

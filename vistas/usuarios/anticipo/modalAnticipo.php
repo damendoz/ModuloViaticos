@@ -12,14 +12,14 @@
           </div>
           <div class="modal-body">
             <input type="text" id="idUsuario" name="idUsuario" hidden>
+            <input type="text" id="idPersona" name="idPersona" hidden>
             <div class="row">
               <div class="col-sm-4">
-                <label for="anticipoPaterno">Apellido paterno</label>
+                <label for="anticipoPaterno">Apellidos</label>
 
                 <?php
                   $idUsuario = $_SESSION['usuario']['id'];
                   $sql = "SELECT
-                  usuario.id_persona AS idPersona,
                   persona.paterno AS paterno
                   FROM
                     t_persona AS persona
@@ -30,34 +30,10 @@
                         $respuesta = mysqli_query($conexion, $sql);
                 ?>
 
-                <select class="form-control" id="anticipoPaterno" name="anticipoPaterno" require>
                 <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
-                <option value="<?php echo $mostrar['idPersona']; ?>"><?php echo $mostrar['paterno']; ?></option>
+                <input class="form-control" id="anticipoPaterno" 
+                name="anticipoPaterno" readonly value="<?php echo $mostrar['paterno']; ?>">
                 <?php } ?>
-                </select>
-              </div>
-              <div class="col-sm-4">
-                <label for="anticipoMaterno">Apellido materno</label>
-
-                <?php
-                  $idUsuario = $_SESSION['usuario']['id'];
-                  $sql = "SELECT
-                  usuario.id_persona AS idPersona,
-                  persona.materno AS materno
-                  FROM
-                    t_persona AS persona
-                        INNER JOIN
-                      t_usuarios AS usuario ON persona.id_persona = usuario.id_persona
-                  WHERE
-                    persona.id_persona = '$idUsuario'";
-                        $respuesta = mysqli_query($conexion, $sql);
-                ?>
-
-                <select class="form-control" id="anticipoMaterno" name="anticipoMaterno" require>
-                <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
-                <option value="<?php echo $mostrar['idPersona']; ?>"><?php echo $mostrar['materno']; ?></option>
-                <?php } ?>
-                </select>
               </div>
               <div class="col-sm-4">
                 <label for="anticipoNombres">Nombres</label>
@@ -74,148 +50,65 @@
                   WHERE
                     persona.id_persona = '$idUsuario'";
                         $respuesta = mysqli_query($conexion, $sql);
-                ?>
-
-                <select class="form-control" id="anticipoNombres" name="anticipoNombres" require>
+                ?> 
                 <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
-                <option value="<?php echo $mostrar['idPersona']; ?>"><?php echo $mostrar['nombre']; ?></option>
+                <input class="form-control" id="anticipoNombres" 
+                name="anticipoNombres" readonly value="<?php echo $mostrar['nombre']; ?>">
                 <?php } ?>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-4">
-                <label for="anticipoCargo">Cargo</label>
-                <?php
-                    $idUsuario = $_SESSION['usuario']['id'];
-                    $sql = "SELECT 
-                      cargos.id_cargo idCargo,
-                      cargos.nombre nombreCargo,
-                      cliente.id_cliente AS idCliente,
-                      cliente.nombre AS nombreCliente
-                  FROM
-                    t_cat_cargos AS cargos
-                        INNER JOIN
-                      t_cat_clientes AS cliente ON cargos.id_cliente = cliente.id_cliente
-                  WHERE
-                    cargos.id_persona = (SELECT
-                                             id_persona
-                                           FROM
-                                             t_usuarios
-                                           WHERE
-                                             id_usuario = '$idUsuario')";
-                    $respuesta = mysqli_query($conexion, $sql);
-
-              
-              ?>
-                <select type="text"class="form-control" id="anticipoCargo" name="anticipoCargo" required>
-                <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
-                  <option value="">Selecciona un cargo</option>
-                <option value="<?php echo $mostrar['idCargo']; ?>"><?php echo $mostrar['nombreCargo']; ?></option>
-                <?php } ?>
-                </select>
-              </div>
-              <div class="col-sm-4">
-                <label for="documentoId">Documento ID</label>
-                <?php
-                  $idUsuario = $_SESSION['usuario']['id'];
-                  $sql = "SELECT
-                  usuario.id_persona AS idPersona,
-                  persona.id_identidad AS idIdentidad
-                  FROM
-                    t_persona AS persona
-                        INNER JOIN
-                      t_usuarios AS usuario ON persona.id_persona = usuario.id_persona
-                  WHERE
-                    persona.id_persona = '$idUsuario'";
-                        $respuesta = mysqli_query($conexion, $sql);
-                ?>
-                <select type="number"class="form-control" id="documentoId" name="documentoId" required>
-                <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
-                  <option value="<?php echo $mostrar['idPersona']; ?>"><?php echo $mostrar['idIdentidad']; ?></option>
-                <?php } ?>
-                </select>
-              </div>
-              <div class="col-sm-4">
-                <label for="anticipoTelefono">Telefono Celular</label>
-
-                <?php
-                  $idUsuario = $_SESSION['usuario']['id'];
-                  $sql = "SELECT
-                  usuario.id_persona AS idPersona,
-                  persona.telefono AS telefono
-                  FROM
-                    t_persona AS persona
-                        INNER JOIN
-                      t_usuarios AS usuario ON persona.id_persona = usuario.id_persona
-                  WHERE
-                    persona.id_persona = '$idUsuario'";
-                        $respuesta = mysqli_query($conexion, $sql);
-                ?>
-
-                <select type="number"class="form-control" id="anticipoTelefono" name="anticipoTelefono" required>
-                <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
-                <option value="<?php echo $mostrar['idPersona']; ?>"><?php echo $mostrar['telefono']; ?></option>
-                <?php } ?>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-4">
-                <label for="anticipoCorreo">Correo electrónico</label>
-                <?php
-                  $idUsuario = $_SESSION['usuario']['id'];
-                  $sql = "SELECT
-                  usuario.id_persona AS idPersona,
-                  persona.correo AS correo
-                  FROM
-                    t_persona AS persona
-                        INNER JOIN
-                      t_usuarios AS usuario ON persona.id_persona = usuario.id_persona
-                  WHERE
-                    persona.id_persona = '$idUsuario'";
-                        $respuesta = mysqli_query($conexion, $sql);
-                ?>
-                <select type="text"class="form-control" id="anticipoCorreo" name="anticipoCorreo" required>
-                <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
-                <option value="<?php echo $mostrar['idPersona']; ?>"><?php echo $mostrar['correo']; ?></option>
-                <?php } ?>
-                </select>
               </div>
               <div class="col-sm-4">
                 <label for="anticipoCliente">Cliente asociado</label>
               <?php
                     $idUsuario = $_SESSION['usuario']['id'];
                     $sql = "SELECT 
-                      cargos.id_cargo idCargo,
-                      cliente.id_cliente AS idCliente,
-                      cliente.nombre AS nombreCliente
-                  FROM
-                    t_cat_cargos AS cargos
-                        INNER JOIN
-                      t_cat_clientes AS cliente ON cargos.id_cliente = cliente.id_cliente
-                  WHERE
-                    cargos.id_persona = (SELECT
-                                             id_persona
-                                           FROM
-                                             t_usuarios
-                                           WHERE
-                                             id_usuario = '$idUsuario')";
+                            clientes.id_cliente AS idCliente,
+                            clientes.nombre AS nombreCliente
+                        FROM
+                          t_cat_clientes AS clientes
+                              INNER JOIN
+                                  t_usuarios AS usuarios ON clientes.id_cliente = usuarios.id_cliente
+                              WHERE
+                                usuarios.id_persona = (SELECT
+                                                        id_persona
+                                                      FROM
+                                                        t_usuarios
+                                                      WHERE
+                                                        id_usuario = '$idUsuario')";
+                    $respuesta = mysqli_query($conexion, $sql);
+              ?>
+                <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
+                <input  class="form-control" id="anticipoCliente" 
+                name="anticipoCliente" readonly value="<?php echo $mostrar['nombreCliente']; ?>" required>
+                <?php } ?>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-4"> 
+              <label for="anticipoPoryecto">Proyecto asociado</label>
+              <?php
+                    $idUsuario = $_SESSION['usuario']['id'];
+                    $sql = "SELECT 
+                            proyectos.id_proyecto AS idProyecto,
+                            proyectos.nombre AS nombreProyecto
+                        FROM
+                          t_cat_proyectos AS proyectos
+                              INNER JOIN
+                                  t_usuarios AS usuarios ON proyectos.id_proyecto = usuarios.id_proyecto
+                              WHERE
+                                usuarios.id_persona = (SELECT
+                                                        id_persona
+                                                      FROM
+                                                        t_usuarios
+                                                      WHERE
+                                                        id_usuario = '$idUsuario')";
                     $respuesta = mysqli_query($conexion, $sql);
 
               
               ?>
-
-                <select class="form-control" id="anticipoCliente" name="anticipoCliente" required> 
-                  <option value="">Selecciona un cliente</option>
                   <?php while($mostrar = mysqli_fetch_array($respuesta)) {?>
-                    <option value="<?php echo $mostrar['idCliente']; ?>"><?php echo $mostrar['nombreCliente']; ?></option>
+                    <input class="form-control" id="anticipoPoryecto" 
+                    name="anticipoPoryecto" readonly value="<?php echo $mostrar['nombreProyecto']; ?>">
                   <?php } ?>
-                </select>
-              </div>
-              <div class="col-sm-4"> 
-              <label for="anticipoPoryecto">Proyecto asociado</label>
-                <input type="text"class="form-control" id="anticipoPoryecto" name="anticipoPoryecto" required>
               </div>
             </div>
             <div class="row">
@@ -260,11 +153,11 @@
                 <input type="number"class="form-control" id="anticipoCena" name="anticipoCena" required>
               </div>
               <div class="col-sm-1"> 
-              <label for="anticipoIda">Ida</label>
+              <label for="anticipoIda">Traslado ida</label>
                 <input type="number"class="form-control" id="anticipoIda" name="anticipoIda" required>
               </div>
               <div class="col-sm-1"> 
-              <label for="anticipoVuelta">Vuelta</label>
+              <label for="anticipoVuelta">Retorno</label>
                 <input type="number"class="form-control" id="anticipoVuelta" name="anticipoVuelta" required>
               </div>
               <div class="col-sm-1"> 
@@ -387,52 +280,14 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-3">
-                <label for="anticipoActividadCuatro"></label>
-                <input type="text"class="form-control" id="anticipoActividadCuatro" name="anticipoActividadCuatro">
-              </div>
-              <div class="col-sm-2">
-                <label for="anticipoFechaCuatro"></label>
-                <input type="date"class="form-control" id="anticipoFechaCuatro" name="anticipoFechaCuatro">
-              </div>
-              <div class="col-sm-1"> 
-              <label for="anticipoHorarioCuatro"></label>
-                <input type="text"class="form-control" id="anticipoHorarioCuatro" name="anticipoHorarioCuatro">
-              </div>
-              <div class="col-sm-1"> 
-              <label for="anticipoDesayunoCuatro"></label>
-                <input type="number"class="form-control" id="anticipoDesayunoCuatro" name="anticipoDesayunoCuatro">
-              </div>
-              <div class="col-sm-1"> 
-              <label for="anticipoAlmuerzoCuatro"></label>
-                <input type="number"class="form-control" id="anticipoAlmuerzoCuatro" name="anticipoAlmuerzoCuatro">
-              </div>
-              <div class="col-sm-1"> 
-              <label for="anticipoCenaCuatro"></label>
-                <input type="number"class="form-control" id="anticipoCenaCuatro" name="anticipoCenaCuatro">
-              </div>
-              <div class="col-sm-1"> 
-              <label for="anticipoIdaCuatro"></label>
-                <input type="number"class="form-control" id="anticipoIdaCuatro" name="anticipoIdaCuatro">
-              </div>
-              <div class="col-sm-1"> 
-              <label for="anticipoVueltaCuatro"></label>
-                <input type="number"class="form-control" id="anticipoVueltaCuatro" name="anticipoVueltaCuatro">
-              </div>
-              <div class="col-sm-1"> 
-              <label for="anticipoTotalCuatro"></label>
-                <input type="number"class="form-control" id="anticipoTotalCuatro" name="anticipoTotalCuatro">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-2">
-                <label for="anticipoFinal">Total Final</label>
+              <div class="col-sm-1" style="left: 1083px;bottom:10px;">
+                <label for="anticipoFinal" >Total Final</label>
                 <input type="number"class="form-control" id="anticipoFinal" name="anticipoFinal">
               </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button class="btn btn-primary">Nueva solicitud de anticipo</button> 
+            <button class="btn btn-primary">Guardar solicitud de anticipo</button> 
           </div>
         </div>
       </div>

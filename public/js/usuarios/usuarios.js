@@ -45,15 +45,14 @@ function obtenerDatosUsuario(idUsuario) {
 			$('#usuariou').val(respuesta['nombreUsuario']);
 			$('#idRolu').val(respuesta['idRol']);
 			$('#ubicacionu').val(respuesta['ubicacion']);
+			$('#idIdentidadu').val(respuesta['idIdentidad']);
+			$('#idPaisu').val(respuesta['idPais']);
+			$('#idClienteu').val(respuesta['idCliente']);
+			$('#idProyectou').val(respuesta['idProyecto']);
+			$('#idCargou').val(respuesta['idCargo']);
 
 		}
 	});	
-}
-
-function obtenerDatosAnticipo(idUsuario) {
-
-	alert(idUsuario);
-
 }
 
 function actualizarUsuario() {
@@ -76,59 +75,59 @@ function actualizarUsuario() {
 	return false;
 }
 
- function eliminarUsuario(idUsuario) {
+ //function eliminarUsuario(idUsuario) {
 
-  Swal.fire({
- 	title: '¿Estas seguro de eliminar este usuario?',
- 	text: "Una vez eliminado no podra ser recuperado!",
- 	icon: 'warning',
- 	showCancelButton: true,
- 	confirmbuttonColor: '#3085d6',
- 	cancelButtonColor: '#d33',
- 	confirmButtonText: "Si, eliminalo!",
- }).then((result) => {
- 		if (result.isConfirmed){
-	 		 	$.ajax({
-	 				type: "POST",
-	 				data: "idUsuario=" + idUsuario,
-	 				url: "../procesos/usuarios/crud/eliminarUsuario.php",
-	 				success:function(respuesta) {
-	 					respuesta = respuesta.trim();
-	 					if (respuesta == 1) {
-					$('#tablaUsuariosLoad').load("usuarios/tablaUsuarios.php");
-					Swal.fire(":D","se elimino con exito!","success");
-				} else {
-					Swal.fire(":(","No se pudo Eliminar! " + respuesta, "error");
-				}
- 			}
- 		});
-	 }
+ // Swal.fire({
+ //	title: '¿Estas seguro de eliminar este usuario?',
+ //	text: "Una vez eliminado no podra ser recuperado!",
+ //	icon: 'warning',
+ //	showCancelButton: true,
+ //	confirmbuttonColor: '#3085d6',
+ //	cancelButtonColor: '#d33',
+ //	confirmButtonText: "Si, eliminalo!",
+ // }).then((result) => {
+ //		if (result.isConfirmed){
+//	 		 	$.ajax({
+//	 				type: "POST",
+//	 				data: "idUsuario=" + idUsuario,
+//	 				url: "../procesos/usuarios/crud/eliminarUsuario.php",
+//	 				success:function(respuesta) {
+//	 					respuesta = respuesta.trim();
+//	 					if (respuesta == 1) {
+//					$('#tablaUsuariosLoad').load("usuarios/tablaUsuarios.php");
+//					Swal.fire(":D","se elimino con exito!","success");
+//				} else {
+//					Swal.fire(":(","No se pudo Eliminar! " + respuesta, "error");
+//				}
+ //			}
+ //		});
+//	 }
  	
- })
- return false;
- }
+ // })
+ // return false;
+ // }
 
-function registrarNuevoUsuario(){
+//function registrarNuevoUsuario(){
 
-	$.ajax({
-		type: "POST",
-		data: $('#frmregistrarNuevoUsuario').serialize(),
-		url: "procesos/usuarios/crud/registrarNuevoUsuario.php",
-		success:function(respuesta) {
-			console.log(respuesta);
-			respuesta = respuesta.trim();
-			if (respuesta == 1) {
-					$('#tablaUsuariosLoad').load("usuarios/tablaUsuarios.php");
-					$('#modalregistrarNuevoUsuario').modal("toggle");
-					Swal.fire(":D","Agregado con exito!","success");
-				} else {
-				Swal.fire(":(","Error al agregar! " + respuesta, "error");
-			}
-		}
-	});
+//	$.ajax({
+//		type: "POST",
+//		data: $('#frmregistrarNuevoUsuario').serialize(),
+//		url: "procesos/usuarios/crud/registrarNuevoUsuario.php",
+//		success:function(respuesta) {
+	//		console.log(respuesta);
+//			respuesta = respuesta.trim();
+//			if (respuesta == 1) {
+//					$('#tablaUsuariosLoad').load("usuarios/tablaUsuarios.php");
+//					$('#modalregistrarNuevoUsuario').modal("toggle");
+	//				Swal.fire(":D","Agregado con exito!","success");
+	//			} else {
+	//			Swal.fire(":(","Error al agregar! " + respuesta, "error");
+	//		}
+	//	}
+//	});
 	
-		return false;
-}
+//		return false;
+//}
 
 function agregarIdUsuarioReset(idUsuario) {
 
